@@ -13,5 +13,5 @@ $sql = "INSERT INTO jogo
 
 executarSQL($conexao, $sql);
 
-$usuario->id = mysqli_insert_id($conexao);
+$usuario->id_jogos = mysqli_insert_id($conexao);
 echo json_encode($usuario);

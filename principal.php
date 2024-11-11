@@ -11,7 +11,7 @@
 
 <body>
     <form onsubmit="return salvarJogo(event);">
-        <input name="id_jogos" type="hidden" value="">
+        <input name="id_jogos" type="hidden">
         <label>Nome: <input type="text" name="nome" required></label><br>
         <label>Categoria: <input type="text" name="categoria" required></label><br>
         <label>Descrição: <input type="text" name="descricao" required></label><br>

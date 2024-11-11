@@ -14,11 +14,11 @@ function listarTodos() {
 
 function inserirJogos(jogos) {
     for (const jogo of jogos) {
-        inserirUsuario(jogo);
+        inserirJogo(jogo);
     }
 }
 
-function inserirUsuario(jogo) {
+function inserirJogo(jogo) {
     let tbody = document.getElementById('usuarios'); 
     let tr = document.createElement('tr');
     let tdId = document.createElement('td');
@@ -32,7 +32,7 @@ function inserirUsuario(jogo) {
     let tdAlterar = document.createElement('td');
     let btnAlterar = document.createElement('button');
     btnAlterar.innerHTML = "Alterar";
-    btnAlterar.addEventListener("click", buscaUsuario, false);
+    btnAlterar.addEventListener("click", buscaJogo, false);
     btnAlterar.id = jogo.id_jogos;
     tdAlterar.appendChild(btnAlterar);
     let tdExcluir = document.createElement('td');
@@ -78,9 +78,9 @@ function excluirJogo(retorno, id_jogo) {
     }
 }
 
-function buscaUsuario(evt) {
+function buscaJogo(evt) {
     let id_jogo = evt.currentTarget.id;
-    fetch('buscaUsuario.php?id_jogo=' + id_jogo, {
+    fetch('buscarJogo.php?id=' + id_jogo, {
         method: "GET",
         headers: { 'Content-Type': "application/json; charset=UTF-8" }
     })
@@ -112,18 +112,17 @@ function salvarJogo(event) {
     let descricao = inputDescricao.value;
 
     if (id_jogos === "") {
-        cadastrar(id_jogos, nome, categoria, descricao);
+        cadastrar(nome, categoria, descricao);
     } else {
-        alterar(id_jogos, nome, categoria, descricao);
+        alterar(nome, categoria, descricao);
     }
     document.getElementsByTagName('form')[0].reset();
 }
 
-function cadastrar(id_jogos, nome, categoria, descricao) {
+function cadastrar(nome, categoria, descricao) {
     fetch('inserir.php', {
         method: 'POST',
         body: JSON.stringify({
-            id_jogos: id_jogos,
             nome: nome,
             categoria: categoria,
             descricao: descricao
@@ -131,7 +130,7 @@ function cadastrar(id_jogos, nome, categoria, descricao) {
         headers: { 'Content-Type': "application/json; charset=UTF-8" }
     })
         .then(response => response.json())
-        .then(jogo => inserirUsuario(jogo))
+        .then(jogo => inserirJogo(jogo))
         .catch(error => console.log(error));
 }
 
