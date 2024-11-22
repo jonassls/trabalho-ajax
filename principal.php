@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD JS</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 </head>
 
 <body>
@@ -32,6 +32,19 @@
     </table>
 
     <script src="script.js"></script>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('deletado')) {
+            M.toast({
+                html: 'Registro apagado!',
+                displayLength: 4000
+            });
+            // Retira o parâmetro 'deletado' da URL
+            urlParams.delete('deletado');
+            // Atualiza a URL sem recarregar a página
+            window.history.replaceState({}, document.title, window.location.origin + window.location.pathname);
+        }
+    </script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 

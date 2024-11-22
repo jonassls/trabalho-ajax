@@ -42,7 +42,7 @@ function inserirJogo(jogo) {
     let tdExcluir = document.createElement('td');
     let btnExcluir = document.createElement('button');
     btnExcluir.addEventListener("click", excluir, false);
-    btnExcluir.id_jogo = jogo.id_jogos;
+    btnExcluir.id_jogos = jogo.id_jogos;
     btnExcluir.innerHTML = "Excluir";
     tdExcluir.appendChild(btnExcluir);
     
@@ -59,7 +59,7 @@ function inserirJogo(jogo) {
 function excluir(evt) {
     let id_jogos = evt.currentTarget.id_jogos;  
     let excluir = confirm("Você tem certeza que deseja excluir este jogo?");
-    if (excluir) {
+    if (excluir == true) {
         fetch('excluir.php?id_jogo=' + id_jogos, { 
             method: "GET",
             headers: { 'Content-Type': "application/json; charset=UTF-8" }
@@ -84,7 +84,7 @@ function excluirJogo(retorno, id_jogos) {
 function alterarJogo(jogo) {
     let tbody = document.getElementById('jogos');
     for (const tr of tbody.children) {
-        if (tr.children[0].innerHTML == jogo.id_jogo) { 
+        if (tr.children[0].innerHTML == jogo.id_jogos) { 
             tr.children[1].innerHTML = jogo.nome;
             tr.children[2].innerHTML = jogo.categoria;
             tr.children[3].innerHTML = jogo.descricao;
