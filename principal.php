@@ -10,41 +10,28 @@
 </head>
 
 <body>
+    <main class="container">
     <form onsubmit="return salvarJogo(event);">
         <label>ID: <input type="number" name="id_jogos"></label><br>
-        <label>Nome: <input type="text" name="nome"></label><br>
-        <label>Categoria: <input type="text" name="categoria"></label><br>
-        <label>Descrição: <input type="text" name="descricao"></label><br>
-        <input type="submit" value="Salvar Usuário">
+        <label>Nome: <input type="text" name="nome" required></label><br>
+        <label>Categoria: <input type="text" name="categoria" required></label><br>
+        <label>Descrição: <input type="text" name="descricao" required></label><br>
+        <input type="submit" class="brown lighten-3 waves-effect waves-light btn">
     </form>
     <br>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Descrição</th>
-                <th colspan="2">Opções</th>
-            </tr>
-        </thead>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
         <tbody id="jogos"></tbody>
     </table>
-
+    </main>
     <script src="script.js"></script>
-    <script>
-        var urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('deletado')) {
-            M.toast({
-                html: 'Registro apagado!',
-                displayLength: 4000
-            });
-            // Retira o parâmetro 'deletado' da URL
-            urlParams.delete('deletado');
-            // Atualiza a URL sem recarregar a página
-            window.history.replaceState({}, document.title, window.location.origin + window.location.pathname);
-        }
-    </script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 

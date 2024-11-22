@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let tdAlterar = document.createElement('td');
+    let btnAlterar = document.createElement('button');
+    btnAlterar.innerHTML = "Alterar";
+    btnAlterar.addEventListener("click", buscaJogo, false);
     listarTodos();
 });
 
@@ -80,7 +84,6 @@ function excluirJogo(retorno, id_jogos) {
         }
     }
 }
-
 function alterarJogo(jogo) {
     let tbody = document.getElementById('jogos');
     for (const tr of tbody.children) {
